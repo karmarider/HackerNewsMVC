@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HackerNews.Models.HackerStorySummary>
+
+@{
+    ViewData["Title"] = "Latest Hacker News Titles";
+    ViewData["Message"] = "Kaush Chokshi - Coding Sample - ASP.NET Core Razor";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.By)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item != null && item.url != null)
+                    {
+                        <a href="@item.url">@item.Title</a>
+                    }
+                    else
+                    { @Html.DisplayFor(modelItem => item.Title);
+                }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.By)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
